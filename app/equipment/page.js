@@ -2,6 +2,7 @@ import { all } from '@/lib/db';
 import { CATS, EqTable } from '@/lib/ui';
 export default async function List({ searchParams: { q = '', cat = '' } }) {
   const s = q.toLowerCase();
+  console.log(await all());
   const eq = (await all()).filter(e => (!cat || e.category === cat) && [e.tag, e.name, e.location, e.serial_no, e.manufacturer].join(' ').toLowerCase().includes(s));
   return <>
     <h1>Equipment <a className="btn" href="/equipment/edit">Add equipment</a></h1>
